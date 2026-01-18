@@ -11,18 +11,26 @@ Hytale flatpak defaults to Mesa/Intel integrated graphics even when an NVIDIA GP
 - Low FPS despite having a powerful NVIDIA GPU
 - Game runs sluggishly
 
-## Quick Fix (Automated)
+## Quick Fix (One-Liner)
 
-Run the fix script:
+Copy and paste this into your terminal:
 
 ```bash
-./fix-hytale-nvidia.sh
+curl -fsSL https://raw.githubusercontent.com/Mr-Renegade/hytale-nvidia-fix/master/fix-hytale-nvidia.sh | bash
 ```
 
-The script will:
+That's it! The script will:
 1. Detect your NVIDIA driver version
 2. Install the matching flatpak GL extension
 3. Verify the installation
+
+### Alternative: Download and Run
+
+```bash
+wget https://raw.githubusercontent.com/Mr-Renegade/hytale-nvidia-fix/master/fix-hytale-nvidia.sh
+chmod +x fix-hytale-nvidia.sh
+./fix-hytale-nvidia.sh
+```
 
 ## Manual Fix
 
