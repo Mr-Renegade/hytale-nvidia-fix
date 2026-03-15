@@ -7,7 +7,7 @@ Automatic fix for Hytale flatpak using Intel/AMD integrated graphics instead of 
 Hytale flatpak defaults to Mesa/Intel integrated graphics even when an NVIDIA GPU is available, resulting in poor performance (~30 FPS instead of 100+ FPS).
 
 **Symptoms:**
-- Debug overlay (F7, requires Developer Mode in settings) shows: `GPU Renderer: Mesa Intel(R) UHD Graphics`
+- Debug overlay (Shift + F7, requires Developer Mode in settings) shows: `GPU Renderer: Mesa Intel(R) UHD Graphics`
 - Low FPS despite having a powerful NVIDIA GPU
 - Game runs sluggishly
 
@@ -68,7 +68,7 @@ flatpak run com.hypixel.HytaleLauncher
 
 To verify it's working:
 1. In Hytale, go to **Settings** and enable **Developer Mode**
-2. Press **Ctrl** + **F7** in-game to open the detailed debug overlay
+2. Press **Shift** + **F7** in-game to open the detailed debug overlay
 3. Check the **RENDERING** section - you should now see:
    - `GPU: NVIDIA GeForce RTX [YOUR MODEL]`
    - `OpenGL: [VERSION] NVIDIA [DRIVER VERSION]`
