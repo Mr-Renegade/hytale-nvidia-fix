@@ -1,6 +1,6 @@
 # Hytale Linux NVIDIA GPU Fix
 
-Automatic fix for Hytale flatpak using Intel integrated graphics instead of NVIDIA GPU on Linux.
+Automatic fix for Hytale flatpak using Intel/AMD integrated graphics instead of NVIDIA GPU on Linux.
 
 ## The Problem
 
@@ -23,6 +23,7 @@ That's it! The script will:
 1. Detect your NVIDIA driver version
 2. Install the matching flatpak GL extension
 3. Verify the installation
+4. If does not work, try troubleshooting the individual manual steps.
 
 ### Alternative: Download and Run
 
@@ -67,11 +68,31 @@ flatpak run com.hypixel.HytaleLauncher
 
 To verify it's working:
 1. In Hytale, go to **Settings** and enable **Developer Mode**
-2. Press **F7** in-game to open the debug overlay
+2. Press **Ctrl** + **F7** in-game to open the detailed debug overlay
 3. Check the **RENDERING** section - you should now see:
    - `GPU: NVIDIA GeForce RTX [YOUR MODEL]`
    - `OpenGL: [VERSION] NVIDIA [DRIVER VERSION]`
    - Significantly higher FPS
+
+#### If it does not work
+
+```bash
+flatpak run --env=__NV_PRIME_RENDER_OFFLOAD=1 --env=__GLX_VENDOR_LIBRARY_NAME=nvidia com.hypixel.HytaleLauncher
+```
+The idea is to use environment variables to force hytale to use the NVIDIA graphics card. The **__NV_PRIME_RENDER_OFFLOAD** tell nvidia to offload rendering to discrete GPU, and **__GLX_VENDOR_LIBRARY_NAME** tells hytale to use nvidia as the renderer.
+
+Another way to check:
+1. Open a terminal and run the command.
+2. Monitor the logs in the terminal after opening a world.
+3. Find the section called: **System informations**. If fixed, it should show your graphics card here, instead of Integrated Graphics.
+
+Example:
+(image)
+
+4. To ensure this config stays like this, ensure when the program is launched the command (same command as step 1.) is used. You can use a program like flatseal, select hytale launcher, and then select environment, then add the environment variables.
+
+
+(image2)
 
 ## Why This Works
 
@@ -95,11 +116,19 @@ This fix works on **any Linux distribution** that uses:
 - The Hytale flatpak from Hypixel
 
 **Tested on:**
+(one user)
 - Pop!_OS 22.04 LTS (NVIDIA ISO)
 - NVIDIA GeForce RTX 4070 Laptop GPU
 - Driver version 580.119.02
 
+(another user)
+- Bazzite Desktop Gnome (NVIDIA ISO) (installed on 2026)
+- NVIDIA GeForce RTX 3060 Laptop GPU
+- Driver version 595.45.04
+
 ## Results
+
+Note that the before and after numbers may differ based on system configuration.
 
 **Before fix:**
 - GPU: Mesa Intel UHD Graphics
