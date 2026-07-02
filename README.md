@@ -7,7 +7,7 @@ Automatic fix for Hytale flatpak using Intel/AMD integrated graphics instead of 
 Hytale flatpak defaults to Mesa/Intel integrated graphics even when an NVIDIA GPU is available, resulting in poor performance (~30 FPS instead of 100+ FPS).
 
 **Symptoms:**
-- Debug overlay (Shift + F7, requires Developer Mode in settings) shows: `GPU Renderer: Mesa Intel(R) UHD Graphics`
+- Debug overlay (press F7 twice, requires Developer Mode in settings) shows: `GPU Renderer: Mesa Intel(R) UHD Graphics`
 - Low FPS despite having a powerful NVIDIA GPU
 - Game runs sluggishly
 
@@ -125,6 +125,11 @@ This fix works on **any Linux distribution** that uses:
 - Bazzite Desktop Gnome (NVIDIA ISO) (installed on 2026)
 - NVIDIA GeForce RTX 3060 Laptop GPU
 - Driver version 595.45.04
+
+(also tested on)
+- Arch Linux (installed on 2026)
+- NVIDIA GeForce RTX 3060 Laptop GPU
+- Driver version 610.43.02. Cuda 13.3
 
 ## Results
 
